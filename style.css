@@ -1,0 +1,12 @@
+/*
+ Theme Name:   Connecticut Mirror
+ Theme URI: http://ctmirror.org
+ Description:    Child Theme of Largo, developed by Cornershop Creative
+ Author: Cornershop Creative
+ Author URI: http://cornershopcreative.com
+ Template:       largo
+ Version:        1.0.0
+*/
+
+@import url("../largo/style.css");
+@import url("css/ctmirror.css");
