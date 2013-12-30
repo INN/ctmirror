@@ -4,42 +4,18 @@
  */
 
 define('CALLOUT_POSITION', 5);
-/**
- * Inserts something interesting before the Nth paragraph, if present
- */
-function ctmirror_callout( $content ) {
-
-	$insertion = ctmirror_callout_insert();
-
-	// only on single pages
-	if ( !is_single() ) return $content;
-
-	// see how many <p> tags we have, bail if not enough
-	$num_grafs = substr_count( strtolower($content), '<p>' );
-	if ( $num_grafs <= CALLOUT_POSITION ) return $content;
-
-	//lowercase our tags
-	$content = str_replace('<P>', '<p>', $content);
-
-	//split apart
-	$chunks = explode( '<p>', $content );
-
-	//insert new
-	$chunks[ CALLOUT_POSITION - 1 ] = $chunks[ CALLOUT_POSITION - 1 ] . $insertion;
-
-	//return
-	return implode('<p>', $chunks);
-
-}
-add_filter( 'the_content', 'ctmirror_callout', 20 );
 
 /**
- * Returns what's to be inserted into the_content
+ * Load up all of the goodies from the /inc directory
  */
-function ctmirror_callout_insert() {
-	ob_start();	// why no get_the_widget() ?
-	the_widget( 'largo_recent_posts_widget' );
-	return ob_get_clean();
+$includes = array(
+	'/inc/callout.php',	//adds a widget within the body of posts
+	'/inc/largo-related.php',	// implements largo-related widget from newer version of Largo
+);
+
+// Perform load
+foreach ( $includes as $include ) {
+	require_once( get_stylesheet_directory() . $include );
 }
 
 /**
@@ -54,4 +30,16 @@ function ctmirror_enqueue() {
 		TRUE
 	);
 }
-add_action( 'wp_enqueue_scripts', 'largo_child_enqueue' );
+add_action( 'wp_enqueue_scripts', 'ctmirror_enqueue' );
+
+/**
+ * Load Google font
+ */
+function ctmirror_head() {
+
+	if ( !is_admin() ) :	?>
+		<link href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic" rel="stylesheet" type="text/css" />
+	<?php
+	endif;
+}
+add_action( 'wp_head', 'ctmirror_head', 9 );
