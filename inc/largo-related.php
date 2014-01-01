@@ -79,7 +79,11 @@ class largo_related_posts_widget extends WP_Widget {
 	<?php
 	}
 }
+function ctmirror_register_widgets() {
+	register_widget( 'largo_related_posts_widget' );
+}
 
+add_action( 'widgets_init', 'ctmirror_register_widgets' );
 
 /**
  * THE BRAINS BEHIND RELATING CONTENT
@@ -232,7 +236,7 @@ class Largo_Related {
 		$ids = array_unique( $this->post_ids );
 
 		//truncate to desired length
-		$ids = array_slice( $ids, 0, $this->number );
+		$ids = array_slice( $ids, 0, $this->number - 1 );
 
 		//run filters
 		return apply_filters( 'largo_related_posts', $ids );

@@ -38,7 +38,7 @@ add_action( 'wp_enqueue_scripts', 'ctmirror_enqueue' );
 function ctmirror_head() {
 
 	if ( !is_admin() ) :	?>
-		<link href="//fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic" rel="stylesheet" type="text/css" />
+		<link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic" rel="stylesheet" type="text/css" />
 	<?php
 	endif;
 }
