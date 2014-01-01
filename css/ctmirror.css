@@ -19,3 +19,6 @@
 p { font-size: 16px; line-height: 1.6; }
 
 iframe.fb_ltr, .fb-comments { max-width: 100%; }
+
+.cycle-wrapper { min-height: 300px; position: relative; }
+.cycle-wrapper li { display: block; position: absolute; }
