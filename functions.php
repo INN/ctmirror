@@ -12,6 +12,9 @@ $includes = array(
 	'/inc/callout.php',	//adds a widget within the body of posts
 	'/inc/largo-related.php',	// implements largo-related widget from newer version of Largo
 	'/inc/sponsors.php',	// implements largo-related widget from newer version of Largo
+	'/inc/post-types.php',	// the post types
+	'/inc/fields.php',			// the fields
+	'/inc/taxonomy.php',		// the custom taxonomies
 );
 
 // Perform load
