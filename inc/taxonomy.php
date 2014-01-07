@@ -14,10 +14,9 @@ function ctmirror_register_taxonomy() {
 
 
 	$taxonomies = array(
-		'topic'          => array( 'Topic', 'Topics' ),
 		'health-topic'   => array( 'Health Topic', 'Health Topics' ),
 		'blog-type'      => array( 'Blog Type', 'Blog Types' ),
-		'document-group' => array( 'Document Group', 'Document Groups' ),
+		//'document-group' => array( 'Document Group', 'Document Groups' ),
 		'campaign-issue' => array( 'Campaign Issue', 'Campaign Issues' ),
 		'image-gallery'  => array( 'Image Gallery', 'Image Galleries' ),
 	);
