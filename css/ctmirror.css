@@ -20,5 +20,5 @@ p { font-size: 16px; line-height: 1.6; }
 
 iframe.fb_ltr, .fb-comments { max-width: 100%; }
 
-.cycle-wrapper { min-height: 300px; position: relative; }
-.cycle-wrapper li { display: block; position: absolute; }
+#main .cycle-wrapper { min-height: 60px; position: relative; margin: 20px auto 0; padding: 0; }
+#main .cycle-wrapper li { display: block; position: absolute; text-align: center; width: 100%; }
