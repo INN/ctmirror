@@ -3,15 +3,19 @@
 @import scut
 
 //sitewide
-#page
-	-webkit-font-smoothing: antialiased
+h1,h2,h3,h4,h5,h6
+	font-family: "Lora", Georgia, "Times New Roman", Times, serif
+	> a
+		color: black
+		&:hover
+			text-decoration: none
 
 //header
 #site-header
 	img
-		max-width: 420px
-		height: auto
-		margin: 30px 0
+		max-height: 70px
+		width: auto
+		margin: 20px 0
 
 //widget within content
 .single #content .widget
@@ -20,6 +24,13 @@
 	margin: 0 0 20px 20px
 	max-width: 300px
 	min-width: 100px
+	.widgettitle
+		font-size: 18px
+		margin-bottom: 0.8em
+	h4
+		font-size: 17px
+	p
+		padding: 0
 
 .related
 	margin: 0 0 0 0 !important
@@ -41,10 +52,12 @@ p
 	font-size: 16px
 	line-height: 1.6
 
+// facebook comments
 iframe.fb_ltr,
 .fb-comments
 	max-width: 100%
 
+// widget for supporters
 #main .cycle-wrapper
 	min-height: 60px
 	position: relative
@@ -54,4 +67,9 @@ iframe.fb_ltr,
 		display: block
 		position: absolute
 		text-align: center
+		width: 100%
+
+// catagory dropdown
+.widget
+	select#cat
 		width: 100%

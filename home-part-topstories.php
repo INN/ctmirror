@@ -29,7 +29,7 @@
 
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 			    <h5 class="byline"><?php largo_byline(); ?></h5>
-			    <?php largo_excerpt( $post, 4, false ); ?>
+			    <?php largo_excerpt( $post, 2, false ); ?>
 			    <?php if ( largo_post_in_series() ):
 					$feature = largo_get_the_main_feature();
 					$feature_posts = largo_get_recent_posts_for_term( $feature, 1, 1 );
@@ -66,8 +66,9 @@
 			        		<h5 class="top-tag"><?php largo_categories_and_tags(1); ?></h5>
 			        	<?php endif; ?>
 			        	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			        	<h5 class="byline"><?php largo_byline(); ?></h5>
 			        	<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-			            <?php largo_excerpt( $post, 3, false ); ?>
+			            <?php largo_excerpt( $post, 2, false ); ?>
 			        </div>
 			    <?php elseif ($count == 4) : ?>
 			        <h4 class="subhead"><?php _e('Quick Hits', 'ctmirror'); ?></h4>
