@@ -28,18 +28,28 @@
 				<?php } ?>
 
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-			    <h5 class="byline"><?php largo_byline(); ?></h5>
-			    <?php largo_excerpt( $post, 2, false ); ?>
-			    <?php if ( largo_post_in_series() ):
-					$feature = largo_get_the_main_feature();
-					$feature_posts = largo_get_recent_posts_for_term( $feature, 1, 1 );
-					if ( $feature_posts ):
-						foreach ( $feature_posts as $feature_post ): ?>
+		    <h5 class="byline"><?php largo_byline(); ?></h5>
+		    <?php largo_excerpt( $post, 2, false ); ?>
 
-							<h4 class="related-story"><?php _e('RELATED:', 'ctmirror'); ?> <a href="<?php echo esc_url( get_permalink( $feature_post->ID ) ); ?>"><?php echo get_the_title( $feature_post->ID ); ?></a></h4>
-						<?php endforeach;
-					endif;
-				endif;
+		    <?php
+		    	// enhanced "related" functionality for CT Mirror
+					$related = new Largo_Related( 2 );
+			 		//get the related posts
+			 		$rel_posts = new WP_Query( array(
+			 			'post__in' => $related->ids(),
+			 			'nopaging' => 1
+			 		) );
+
+			 		if ( $rel_posts->have_posts() ) {
+				 		echo "<h3>" . __('Related', 'ctmirror') . "</h3>";
+				 		while ( $rel_posts->have_posts() ): $rel_posts->the_post(); ?>
+							<h4 class="related-story">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							</h4>
+							<?php
+						endwhile;
+					}
+					wp_reset_postdata();
 			endwhile;
 		endif; // end top story ?>
 	</div>
@@ -71,7 +81,7 @@
 			            <?php largo_excerpt( $post, 2, false ); ?>
 			        </div>
 			    <?php elseif ($count == 4) : ?>
-			        <h4 class="subhead"><?php _e('Quick Hits', 'ctmirror'); ?></h4>
+			        <h4 class="subhead"><?php _e('Briefs', 'ctmirror'); ?></h4>
 			        <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 			    <?php else : ?>
 			        <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
