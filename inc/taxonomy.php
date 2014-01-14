@@ -19,6 +19,7 @@ function ctmirror_register_taxonomy() {
 		//'document-group' => array( 'Document Group', 'Document Groups' ),
 		'campaign-issue' => array( 'Campaign Issue', 'Campaign Issues' ),
 		'image-gallery'  => array( 'Image Gallery', 'Image Galleries' ),
+		'spotlight'  => array( 'Spotlight', 'Spotlights' ),
 	);
 
 	foreach( $taxonomies as $taxonomy => $labels ) {
