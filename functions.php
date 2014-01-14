@@ -60,6 +60,35 @@ function largo_time( $echo = true ) {
 	return $output;
 }
 
+
+/**
+ * Outputs custom byline and link (if set), otherwise outputs author link and post date
+ *
+ * Here in case we need to hide author when "admin" or "staff"
+ */
+function largo_byline( $echo = true ) {
+	global $post;
+	$values = get_post_custom( $post->ID );
+	$authors = ( function_exists( 'coauthors_posts_links' ) && !isset( $values['largo_byline_text'] ) ) ? coauthors_posts_links( null, null, null, null, false ) : largo_author_link( false );
+
+	$output = sprintf( '<span class="by-author"><span class="by">By:</span> <span class="author vcard" itemprop="author">%1$s</span></span><span class="sep"> | </span><time class="entry-date updated dtstamp pubdate" datetime="%2$s">%3$s</time>',
+		$authors,
+		esc_attr( get_the_date( 'c' ) ),
+		largo_time( false )
+	);
+
+	if ( current_user_can( 'edit_post', $post->ID ) )
+		$output .=  sprintf( ' | <span class="edit-link"><a href="%1$s">Edit This Post</a></span>', get_edit_post_link() );
+
+ 	if ( is_single() && of_get_option( 'clean_read' ) === 'byline' )
+ 		$output .=	__('<a href="#" class="clean-read">View as "Clean Read"</a>', 'largo');
+
+	if ( $echo )
+		echo $output;
+	return $output;
+}
+
+
 /**
  * performance hack?
  * See http://hitchhackerguide.com/2011/11/01/reducing-postmeta-queries-with-update_meta_cache/
@@ -85,3 +114,71 @@ function cache_meta_data( $posts, $object ) {
 
     return $posts;
 }
+
+/**
+ * New ad zone
+ */
+function ctmirror_ad_tags_ids( $tags ) {
+	$tags[] = array(
+		'tag'       => 'tall',
+		'url_vars'  => array(
+				'tag'       => '250x500',
+				'sz'        => '250x500',
+				'height'    => '500',
+				'width'     => '250',
+			),
+		'enable_ui_mapping' => true,
+	);
+	$tags[] = array(
+		'tag'       => 'wide',
+		'url_vars'  => array(
+				'tag'       => '640x80',
+				'sz'        => '640x80',
+				'height'    => '80',
+				'width'     => '640',
+			),
+		'enable_ui_mapping' => true,
+	);
+	$tags[] = array(
+		'tag'       => '250x250-2',
+		'url_vars'  => array(
+				'tag'       => '250x250-2',
+				'sz'        => '250x250',
+				'height'    => '250',
+				'width'     => '250',
+			),
+		'enable_ui_mapping' => true,
+	);
+	$tags[] = array(
+		'tag'       => '300x250-3',
+		'url_vars'  => array(
+				'tag'       => '300x250-3',
+				'sz'        => '300x250',
+				'height'    => '250',
+				'width'     => '300',
+			),
+		'enable_ui_mapping' => true,
+	);
+	return $tags;
+}
+add_filter( 'acm_ad_tag_ids', 'ctmirror_ad_tags_ids', 11 );
+
+// display ads as various actions
+function ctmirror_rail_ads() {
+	do_action( 'acm_tag', 'right-sidebar', 10, 3 );
+	do_action( 'acm_tag', 'right-sidebar-tall' );
+	do_action( 'acm_tag', 'right-sidebar-2' );
+	do_action( 'acm_tag', 'adsense-rect' );
+}
+add_action( 'largo_after_sidebar_content', 'ctmirror_rail_ads', 11 );
+
+// Add additional output tokens
+function ctmirror_acm_output_tokens( $output_tokens, $tag_id, $code_to_display ) {
+	// This is a quick example to show how to assign an output token to any value. Things like the zone1 value can be used to compute.
+	$output_tokens['%tag_id%'] = $tag_id;
+//	$output_tokens['%width%'] = $code_to_display['url_vars']['width'];	//can't get these to work, always NULL
+//	$output_tokens['%height%'] = $code_to_display['url_vars']['height'];
+	return $output_tokens;
+}
+// The low priority will not overwrite what's set up. Higher values will.
+add_filter('acm_output_tokens', 'ctmirror_acm_output_tokens', 1, 3 );

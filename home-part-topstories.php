@@ -33,7 +33,7 @@
 
 		    <?php
 		    	// enhanced "related" functionality for CT Mirror
-					$related = new Largo_Related( 2 );
+					$related = new Largo_Related( 3 );
 			 		//get the related posts
 			 		$rel_posts = new WP_Query( array(
 			 			'post__in' => $related->ids(),
@@ -41,13 +41,14 @@
 			 		) );
 
 			 		if ( $rel_posts->have_posts() ) {
-				 		echo "<h3>" . __('Related', 'ctmirror') . "</h3>";
+				 		echo "<div class='related-to-feature'><h3>" . __('Related', 'ctmirror') . "</h3>";
 				 		while ( $rel_posts->have_posts() ): $rel_posts->the_post(); ?>
 							<h4 class="related-story">
 								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 							</h4>
 							<?php
 						endwhile;
+						echo "</div>";
 					}
 					wp_reset_postdata();
 			endwhile;

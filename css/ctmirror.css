@@ -7,6 +7,8 @@ h1, h2, h3, h4, h5, h6 { font-family: "Times New Roman", Times, serif; }
 h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a { color: black; }
 h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover { text-decoration: none; }
 
+.top-tag, .byline, .widgettitle, .subhead, .related-to-feature h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
 #site-header img { max-height: 70px; width: auto; margin: 20px 0; }
 
 .single #content .widget { float: right; width: 36%; margin: 0 0 20px 20px; max-width: 300px; min-width: 100px; }
@@ -22,6 +24,9 @@ h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hov
 .related p { margin-bottom: 1em; }
 
 #homepage-featured .sub-stories p { font-size: 13px; line-height: 1.3em; }
+
+#homepage-featured .related-to-feature h3 { text-transform: uppercase; margin-bottom: 0.5em; }
+#homepage-featured .related-to-feature h4 { margin: 0.7em 0; font-size: 18px; }
 
 iframe.fb_ltr, .fb-comments { max-width: 100%; }
 
