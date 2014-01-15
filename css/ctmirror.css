@@ -34,3 +34,5 @@ iframe.fb_ltr, .fb-comments { max-width: 100%; }
 #main .cycle-wrapper li { display: block; position: absolute; text-align: center; width: 100%; }
 
 .widget select#cat { width: 100%; }
+
+div[id^='acm-ad-tag'] { text-align: center; margin: 1.5em 0; }
