@@ -65,31 +65,44 @@
 					'terms' 	=> 'homepage-featured'
 				)
 			),
-			'showposts'		=> 7,
+			'showposts'		=> 3,
 			'post__not_in' 	=> $ids
 		) );
 		if ( $substories->have_posts() ) :
-			$count = 1;
-			while ( $substories->have_posts() ) : $substories->the_post(); $ids[] = get_the_ID();
-				if ($count <= 3) : ?>
-					<div class="story">
-			        	<?php if ( largo_has_categories_or_tags() && $tags === 'top' ) : ?>
-			        		<h5 class="top-tag"><?php largo_categories_and_tags(1); ?></h5>
-			        	<?php endif; ?>
-			        	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-			        	<h5 class="byline"><?php largo_byline(); ?></h5>
-			        	<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-			            <?php largo_excerpt( $post, 2, false ); ?>
-			        </div>
-			    <?php elseif ($count == 4) : ?>
-			        <h4 class="subhead"><?php _e('Briefs', 'ctmirror'); ?></h4>
-			        <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-			    <?php else : ?>
-			        <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-			    <?php endif;
-				$count++;
+			while ( $substories->have_posts() ) : $substories->the_post(); $ids[] = get_the_ID(); ?>
+				<div class="story">
+			  	<?php if ( largo_has_categories_or_tags() && $tags === 'top' ) : ?>
+			    	<h5 class="top-tag"><?php largo_categories_and_tags(1); ?></h5>
+			    <?php endif; ?>
+			    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			    <h5 class="byline"><?php largo_byline(); ?></h5>
+			    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+			    	<?php largo_excerpt( $post, 2, false ); ?>
+				</div>
+				<?php
 			endwhile;
-		endif; // end more featured posts ?>
+		endif;
+
+		$briefs = new WP_Query( array(
+			'tax_query' => array(
+				array(
+					'taxonomy' 	=> 'story-type',
+					'field' 	=> 'slug',
+					'terms' 	=> 'brief'
+				)
+			),
+			'showposts'		=> 4,
+			'post__not_in' 	=> $ids
+		) );
+		if ( $briefs->have_posts() ) : ?>
+			<h4 class="subhead"><?php _e('Briefs', 'ctmirror'); ?></h4>
+			<?php
+			while ( $briefs->have_posts() ) : $briefs->the_post(); $ids[] = get_the_ID(); ?>
+				<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+				<?php
+			endwhile;
+		endif;
+		?>
 	</div>
 	<?php } ?>
 </div>
