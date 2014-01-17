@@ -41,14 +41,11 @@
 			 		) );
 
 			 		if ( $rel_posts->have_posts() ) {
-				 		echo "<div class='related-to-feature'><h3>" . __('Related', 'ctmirror') . "</h3>";
+				 		// echo "<div class='related-to-feature'><h3>" . __('Related', 'ctmirror') . "</h3>";
 				 		while ( $rel_posts->have_posts() ): $rel_posts->the_post(); ?>
-							<h4 class="related-story">
-								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-							</h4>
+							<h4 class="related-story"><?php _e('RELATED:', 'largo'); ?> <a href="<?php echo esc_url( get_permalink( $feature_post->ID ) ); ?>"><?php echo get_the_title( $feature_post->ID ); ?></a></h4>
 							<?php
 						endwhile;
-						echo "</div>";
 					}
 					wp_reset_postdata();
 			endwhile;

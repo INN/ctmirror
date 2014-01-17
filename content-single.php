@@ -26,9 +26,14 @@
 	</header><!-- / entry header -->
 	<?php do_action('largo_after_post_header'); ?>
 	<div class="entry-content clearfix" itemprop="articleBody">
-		<?php if (has_post_thumbnail( $post->ID )) :?>
+		<?php
+			/*
+			if (has_post_thumbnail( $post->ID )) : ?>
 		<p><?php the_post_thumbnail('large'); ?></p>
-		<?php endif; ?>
+			<?php
+			endif;
+			*/
+		?>
 
 		<?php largo_entry_content( $post ); ?>
 	</div><!-- .entry-content -->
