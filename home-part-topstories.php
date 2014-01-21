@@ -3,7 +3,7 @@
 	<?php if ( $layout === '3col' ) { ?>
 	<div class="top-story span12">
 	<?php } else { ?>
-	<div class="top-story span8">
+	<div class="top-story span7">
 	<?php }
 		global $ids;
 		$topstory = largo_get_featured_posts( array(
@@ -50,10 +50,35 @@
 					wp_reset_postdata();
 			endwhile;
 		endif; // end top story ?>
+
+		<?php //briefs
+				$briefs = new WP_Query( array(
+			'tax_query' => array(
+				array(
+					'taxonomy' 	=> 'story-type',
+					'field' 	=> 'slug',
+					'terms' 	=> 'brief'
+				)
+			),
+			'showposts'		=> 4,
+			'post__not_in' 	=> $ids
+		) );
+		if ( $briefs->have_posts() ) : ?>
+			<div class="briefs">
+			<h3 class="subhead"><?php _e('Briefs', 'ctmirror'); ?></h3>
+			<?php
+			while ( $briefs->have_posts() ) : $briefs->the_post(); $ids[] = get_the_ID(); ?>
+				<h4 class="related-story"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+				<?php
+			endwhile;
+			echo "</div>";
+		endif;
+
+?>
 	</div>
 
 	<?php if ( $layout === '2col' ) { ?>
-	<div class="sub-stories span4">
+	<div class="sub-stories span5">
 		<?php $substories = largo_get_featured_posts( array(
 			'tax_query' => array(
 				array(
@@ -76,26 +101,6 @@
 			    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 			    	<?php largo_excerpt( $post, 2, false ); ?>
 				</div>
-				<?php
-			endwhile;
-		endif;
-
-		$briefs = new WP_Query( array(
-			'tax_query' => array(
-				array(
-					'taxonomy' 	=> 'story-type',
-					'field' 	=> 'slug',
-					'terms' 	=> 'brief'
-				)
-			),
-			'showposts'		=> 4,
-			'post__not_in' 	=> $ids
-		) );
-		if ( $briefs->have_posts() ) : ?>
-			<h4 class="subhead"><?php _e('Briefs', 'ctmirror'); ?></h4>
-			<?php
-			while ( $briefs->have_posts() ) : $briefs->the_post(); $ids[] = get_the_ID(); ?>
-				<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 				<?php
 			endwhile;
 		endif;
