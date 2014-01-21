@@ -190,3 +190,13 @@ function ctmirror_acm_output_tokens( $output_tokens, $tag_id, $code_to_display )
 }
 // The low priority will not overwrite what's set up. Higher values will.
 add_filter('acm_output_tokens', 'ctmirror_acm_output_tokens', 1, 3 );
+
+
+function ctmirror_iframe_shortcode( $atts ) {
+	$attrs = array();
+	foreach ( $atts as $k => $v ) {
+		$attrs[] = $k.'="'.esc_attr($v).'"';
+	}
+	return '<iframe '.implode( ' ', $attrs). '></iframe>';
+}
+add_shortcode( 'iframe', 'ctmirror_iframe_shortcode' );
