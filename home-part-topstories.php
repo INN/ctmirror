@@ -60,7 +60,7 @@
 					'terms' 	=> 'brief'
 				)
 			),
-			'showposts'		=> 4,
+			'showposts'		=> 7,
 			'post__not_in' 	=> $ids
 		) );
 		if ( $briefs->have_posts() ) : ?>
