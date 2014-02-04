@@ -192,6 +192,9 @@ function ctmirror_acm_output_tokens( $output_tokens, $tag_id, $code_to_display )
 add_filter('acm_output_tokens', 'ctmirror_acm_output_tokens', 1, 3 );
 
 
+/**
+ * Iframe support as shortcode
+ */
 function ctmirror_iframe_shortcode( $atts ) {
 	$attrs = array();
 	foreach ( $atts as $k => $v ) {
@@ -200,3 +203,16 @@ function ctmirror_iframe_shortcode( $atts ) {
 	return '<iframe '.implode( ' ', $attrs). '></iframe>';
 }
 add_shortcode( 'iframe', 'ctmirror_iframe_shortcode' );
+
+/**
+ * Killing columns from 'All Posts' admin screen
+ */
+function ctmirror_admin_columns($columns) {
+	//print_r($columns);
+	$bad_columns = array ( 'taxonomy-health-topic', 'taxonomy-blog-type', 'taxonomy-campaign-issue', 'taxonomy-image-gallery', 'taxonomy-spotlight', 'comments', 'tags' );
+	foreach ($bad_columns as $key) {
+		unset( $columns[ $key ] );
+	}
+  return $columns;
+}
+add_filter('manage_posts_columns' , 'ctmirror_admin_columns', 11);
