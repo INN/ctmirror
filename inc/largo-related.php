@@ -1,6 +1,7 @@
 <?php
 /*
  * Widget listing related posts
+ * This is a backport of the Largo Related Posts Widget (simple), hacked to favor tags over categories (series still win)
  */
 class largo_related_posts_widget extends WP_Widget {
 
@@ -307,18 +308,52 @@ class Largo_Related {
 	}
 
 	/**
+	 * Fetches posts contained within the tags this post has. Feeds them into $this->post_ids array
+	 *
+	 * @access protected
+	 */
+	protected function get_tag_posts() {
+
+		//we've gone back and forth through all the post's series, now let's try traditional taxonomies, starting with tags
+		$taxonomies = get_the_terms( $this->post_id, array('post_tag' ) );
+
+		//loop thru taxonomies, much like series, and get posts
+		if ( count($taxonomies) ) {
+			//sort by popularity, least popular first (considered more precise)
+			usort( $taxonomies, array(__CLASS__, 'popularity_sort' ) );
+
+			foreach ( $taxonomies as $term ) {
+				$args = array(
+					'post_type' => 'post',
+					'posts_per_page' => 20,	//should usually be enough
+					'taxonomy' 			=> $term->taxonomy,
+					'term' => $term->slug,
+					'orderby' => 'date',
+					'order' => 'DESC',
+				);
+			}
+			// run the query
+			$term_query = new WP_Query( $args );
+
+			if ( $term_query->have_posts() ) {
+				$this->add_from_query( $term_query );
+			}
+		}
+	}
+
+	/**
 	 * Fetches posts contained within the categories and tags this post has. Feeds them into $this->post_ids array
 	 *
 	 * @access protected
 	 */
-	protected function get_term_posts() {
+	protected function get_category_posts() {
 
-		//we've gone back and forth through all the post's series, now let's try traditional taxonomies
-		$taxonomies = get_the_terms( $this->post_id, array('category', 'post_tag') );
+		//we've gone back and forth through all the post's series, now let's try traditional taxonomies, starting with tags
+		$taxonomies = get_the_terms( $this->post_id, array('category') );
 
 		//loop thru taxonomies, much like series, and get posts
 		if ( count($taxonomies) ) {
-			//sort by popularity
+			//sort by popularity, least popular first (considered more precise)
 			usort( $taxonomies, array(__CLASS__, 'popularity_sort' ) );
 
 			foreach ( $taxonomies as $term ) {
@@ -384,8 +419,11 @@ class Largo_Related {
 
 		//are we done yet?
 		if ( count($this->post_ids) == $this->number ) return $this->cleanup_ids();
+		$this->get_tag_posts();
 
-		$this->get_term_posts();
+		//are we done yet?
+		if ( count($this->post_ids) == $this->number ) return $this->cleanup_ids();
+		$this->get_category_posts();
 
 		//are we done yet?
 		if ( count($this->post_ids) == $this->number ) return $this->cleanup_ids();
