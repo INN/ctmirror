@@ -5,7 +5,7 @@
  Author: Cornershop Creative
  Author URI: http://cornershopcreative.com
  Template:       largo
- Version:        1.0.0
+ Version:        1.0.1
 */
 
 @import url("../largo/style.css");
@@ -81,11 +81,12 @@ p.wp-caption-text {
 	display: inline !important;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
 	.visible-phone {
 		display: none !important;
 	}
 }
+
 .single-post .author-box, .single-argolinkroundups .author-box, .labels {
 	background-color: #fff;
 	border: none;
