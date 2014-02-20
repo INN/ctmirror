@@ -213,36 +213,36 @@
  	font-weight: 100;
  }
  .widget_search .gcs_container {
- 	width: 100%;
- 	max-width: 250px;
- 	margin-top: 3px;
+ 	width: 100% !important;
+ 	max-width: 250px !important;
+ 	margin-top: 3px !important;
  }
 
  .gcs_container {
- 	width: 155px;
- 	margin-top: 3px;
+ 	width: 155px !important;
+ 	margin-top: 3px !important;
  }
  .gsc-search-box-tools .gsc-search-box .gsc-input {
- 	margin: 0;
- 	padding: 0;
+ 	margin: 0 !important;
+ 	padding: 0 !important;
  }
  .gsc-input {
- 	margin: 0;
- 	padding: 0;	
- 	border: none;
+ 	margin: 0 !important;
+ 	padding: 0 !important;	
+ 	border: none !important; 
  }
  .gsc-input-box  {
- 	border: none;
- 	background: none;
+ 	border: none !important;
+ 	background: none !important;
  }
  #gs_tti50 {
- 	border: none;
+ 	border: none !important;
  }
  .gsib_a {
- 	padding: 0;
+ 	padding: 0 !important;
  }
  .gsib_b {
- 	display: none;
+ 	display: none !important;
  }
  .gsc-input-box  table {
  	height: 20px !important;
@@ -301,10 +301,10 @@
  	border: none !important;	
  }
  #header-search input.gsc-search-button  {
- 	float: left;
- 	height: 13px;
- 	width: 13px;
- 	padding: 4px;
+ 	float: left !important;
+ 	height: 13px !important;
+ 	width: 13px !important;
+ 	padding: 4px !important;
  }
  @media screen and (max-width: 1200px) {
  	.org-logo {
