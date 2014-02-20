@@ -245,14 +245,14 @@
  	display: none;
  }
  .gsc-input-box  table {
- 	height: 20px;
- 	padding: 0;
- 	margin: 0;	border: none;
+ 	height: 20px !important;
+ 	padding: 0 !important;
+ 	margin: 0 !important;	border: none !important;
  }
  .gsc-input-box table tr, .gsc-input-box table tbody {
- 	border: none;
+ 	border: none !important;
  }
- #gsc-iw-id1 {border: none;}
+ #gsc-iw-id1 {border: none !important;}
  #gs_tti50 input {
  	height: 21px !important;
  	margin-top: 0px !important;
@@ -271,17 +271,17 @@
  	background: #999;
  }
  .gsc-control-cse {
- 	margin: 0;
- 	padding: 0;
- 	background: none;
- 	border: none;
+ 	margin: 0 !important;
+ 	padding: 0 !important;
+ 	background: none !important;
+ 	border: none !important;
  }
  .widget_search input.gsc-search-button {
- 	float: left;
- 	height: 13px;
- 	width: 13px;
- 	padding: 4px 7px;
- 	background: #86181a;
+ 	float: left !important;
+ 	height: 13px !important;
+ 	width: 13px !important;
+ 	padding: 4px 7px !important;
+ 	background: #86181a !important;
  } 
  .widget_search input  {
  	margin-bottom: 4px !important;
