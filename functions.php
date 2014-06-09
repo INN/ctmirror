@@ -216,3 +216,28 @@ function ctmirror_admin_columns($columns) {
   return $columns;
 }
 add_filter('manage_posts_columns' , 'ctmirror_admin_columns', 11);
+
+
+// Allow tags and attributes in TINYMCE
+
+add_action( 'init', 'vipx_allow_contenteditable_on_divs' );
+function vipx_allow_contenteditable_on_divs() {
+    global $allowedposttags;
+ 
+    $tags = array( 'div','style','script','link' );
+    $new_attributes = array( 'contenteditable' => array() );
+ 
+    foreach ( $tags as $tag ) {
+        if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
+            $allowedposttags[ $tag ] = array_merge( $allowedposttags[ $tag ], $new_attributes );
+    }
+}
+add_filter('tiny_mce_before_init', 'vipx_filter_tiny_mce_before_init'); 
+function vipx_filter_tiny_mce_before_init( $options ) { 
+ 
+    if ( ! isset( $options['extended_valid_elements'] ) ) 
+        $options['extended_valid_elements'] = ''; 
+     
+    $options['extended_valid_elements'] .= ',div[contenteditable|class|id|style|rel|num|word|text|related],span[contenteditable|class|id|style|rel|num|word|text|related]'; 
+    return $options; 
+}
