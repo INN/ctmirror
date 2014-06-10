@@ -1,4 +1,14 @@
-@import url(../largo/style.css);@import url(css/ctmirror.css);@import url(http://fonts.googleapis.com/css?family=Merriweather:700,400);#page{box-shadow: none !important;-webkit-box-shadow:none !important;-moz-box-shadow:none !important}
+/*
+ Theme Name:   Connecticut Mirror
+ Theme URI: http://ctmirror.org
+ Description:    Child Theme of Largo, developed by Cornershop Creative
+ Author: Cornershop Creative
+ Author URI: http://cornershopcreative.com
+ Template:       largo
+ Version:        1.0.1
+*/
+/*@import url(../largo/style.css);*/
+@import url(css/ctmirror.css);@import url(http://fonts.googleapis.com/css?family=Merriweather:700,400);#page{box-shadow: none !important;-webkit-box-shadow:none !important;-moz-box-shadow:none !important}
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400);
 body { background: #fff !important;}
 h1.entry-title{font-size:20px;margin-top:2px}
@@ -72,7 +82,7 @@ ol,ul{font-size:15px}
 .stories .entry-content p{line-height:1.4}
 .stories h5.tag-list{font-family:Futura,"Trebuchet MS","Franklin Gothic Medium",Arial,sans-serif}
 .home .stories article img.attachment-medium,.sub-stories img.attachment-post-thumbnail{max-width:90px}
-@media (min-width:600px){.home .stories article img.attachment-medium,.sub-stories img.attachment-post-thumbnail{min-width:65px!important;opacity:.8}
+@media (min-width:600px){.home .stories article img.attachment-medium,.sub-stories img.attachment-post-thumbnail{min-width:65px!important;}
 }
 @media (min-width:768px){.home .stories article img.attachment-medium,.sub-stories img.attachment-post-thumbnail{max-width:35%}
 }
@@ -247,7 +257,7 @@ iframe{max-width:100%}
 .entry-content h6{margin-top:30px;margin-bottom:15px}
 #homepage-featured .sub-stories h3{font-size:15px;margin:4px 0 6px;line-height:1.2}
 .single #content .widget h4{font-size:14px}
-article img.attachment-post-thumbnail{float:right;max-width:100px;margin:0 0 10px 20px}
+article img.attachment-post-thumbnail{float:right;max-width:100px;margin:-25px 0 10px 20px;}
 #sidebar iframe#twitter-widget-0{width:100%!important;height:310px;min-width:0!important;margin-bottom:0}
 #largo-twitter-widget-2{margin-bottom:0!important}
 #ctmirror-sponsors-2{margin-bottom:50px}
@@ -533,4 +543,114 @@ table {
 	border: none;
 	margin-bottom: 18px;
 	margin-top: 17px;
+}
+.top-story.span7 {
+	width: 61.446808505%;
+}
+.sub-stories.span5 {
+	width: 36.425531911%;
+}
+
+/* Highlight widget */
+.highlightKicker {
+	font-size: 11px;
+	float: left;
+	width: 100%;
+	text-transform: uppercase;
+	color: #86181a;
+}
+.highlightedWord {
+	padding: 2px 2px 0 4px;
+	background: #FFF5C7;
+	cursor: pointer;
+}
+.highlightedWord:hover {
+	background: #FFCB87;
+}
+.highlightIcon {
+	height: 13px;
+	margin-top: -3px;
+	margin-left: 0px;
+}
+.highlightIconBig {
+	height: 14px;
+	margin-bottom: -2px;
+}
+.highlightTooltip {
+	position: fixed;
+	border: 1px solid #aaa;
+	border-top: 4px solid #222;
+	left: 50%;
+	margin-left: -250px;
+	padding: 20px 15px;
+	width: 500px;
+	top: -500px;
+	background: #FCF8F7;
+	box-shadow: 2px 2px 24px 2px #666;
+	-moz-box-shadow: 2px 2px 24px 2px #666;
+	-webkit-box-shadow: 2px 2px 24px 2px #666;
+	border-radius: 4px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 100ms linear;
+	-moz-transition: all 100ms linear;
+	-o-transition: all 100ms linear;
+	-ms-transition: all 100ms linear;
+	transition: all 100ms linear;
+	font-family: "Helvetica Neue",Arial,sans-serif;
+	z-index: 100;
+	max-height: 70%;
+	overflow-y: scroll;
+}
+@media screen and (max-width: 600px) {
+	.highlightTooltip {
+		margin-left: -150px;
+		width: 300px;
+	}
+}
+.highlightTooltip.shown {
+	top: 20%;
+}
+.highlightText {
+	font-size: 13px;
+	line-height: 1.3em;
+	margin: 10px 0;
+}
+.highlightHeader {
+	font-size: 20px;
+	font-weight: 300;
+}
+
+.highlightRelated a {
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #BF1717;
+}
+.highlightRelated a:hover {
+	color: red;
+}
+.closedHighlight {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	width: 28px;
+	height: 28px;
+	text-align: center;
+	font-size: 38px;
+	font-weight: 100;
+	cursor: pointer;
+	-webkit-transition: all 100ms linear;
+	-moz-transition: all 100ms linear;
+	-o-transition: all 100ms linear;
+	-ms-transition: all 100ms linear;
+	transition: all 100ms linear;
+}
+.closedHighlight:hover {
+	color: red;
+	top: -2px;
+	right: 8px;
+	font-size: 42px;
 }
