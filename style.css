@@ -192,9 +192,9 @@ p{margin-bottom:20px}
 }
 .search-results .post,.search-results .recent-posts{margin:25px 0}
 .search-submit.btn,.searchbox{font-family:Futura,"Franklin Gothic Medium",Arial,sans-serif}
-.donate-btn{font-size:12px;background:#999;}
+.donate-btn{font-size:12px;/*background:#999;*/}
 p.wp-media-credit{font-size:9px;font-family:Futura,"Franklin Gothic Medium",Arial,sans-serif;font-weight:100;text-transform:uppercase;margin-top:3px;color:#aaa}
-p.wp-caption-text{font-size:11px!important;font-family:Merriweather,Cambria,"Palatino Linotype",Baskerville,"Lucida Bright",Georgia,Times,serif;font-weight:700;font-style:normal;color:#333!important;padding:1px 0 4px;margin-bottom:25px;border-bottom:1px solid #343434}
+p.wp-caption-text{font-size:11px!important;font-family:Merriweather,Cambria,"Palatino Linotype",Baskerville,"Lucida Bright",Georgia,Times,serif;font-weight:700;font-style:normal;color:#333!important;padding:1px 0 4px;margin-bottom:25px;border-bottom:1px solid #ccc}
 .labels,.single-argolinkroundups .author-box,.single-post .author-box{background-color:#fff;border:none;padding:0;margin-top:20px}
 .labels h5,.single-argolinkroundups .author-box h5,.single-post .author-box h5{font-size:12px;text-transform:uppercase;font-family:Futura,"Franklin Gothic Medium",Arial,sans-serif;line-height:1;background-color:#fff;margin-bottom:8px;border-bottom:3px solid #333;padding:0;padding-bottom:3px}
 .single-argolinkroundups .author-box p,.single-argolinkroundups .author-box ul,.single-post .author-box p,.single-post .author-box ul{margin:0;font-family:"Helvetica Neue",Futura,"Franklin Gothic Medium",Arial,sans-serif;font-size:11px;font-weight:400;color:#666;margin-bottom:14px}
@@ -257,7 +257,7 @@ iframe{max-width:100%}
 .entry-content h6{margin-top:30px;margin-bottom:15px}
 #homepage-featured .sub-stories h3{font-size:15px;margin:4px 0 6px;line-height:1.2}
 .single #content .widget h4{font-size:14px}
-article img.attachment-post-thumbnail{float:right;max-width:100px;margin:-25px 0 10px 20px;}
+article img.attachment-post-thumbnail{float:right;max-width:100px;margin:0px 0 10px 20px;}
 #sidebar iframe#twitter-widget-0{width:100%!important;height:310px;min-width:0!important;margin-bottom:0}
 #largo-twitter-widget-2{margin-bottom:0!important}
 #ctmirror-sponsors-2{margin-bottom:50px}
