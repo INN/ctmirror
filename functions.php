@@ -37,16 +37,23 @@ function ctmirror_enqueue() {
 add_action( 'wp_enqueue_scripts', 'ctmirror_enqueue' );
 
 /**
- * Load Google font
+ * add elements to the header
  */
 function ctmirror_head() {
 
 	if ( !is_admin() ) :	?>
-		<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+	
+		<script type="text/javascript">
+		    window._tpm = window._tpm || [];
+		    window._tpm['paywallID'] = '87513365';
+		    window._tpm['trackPageview'] = true;
+		</script>
+		<script type="text/javascript" src="//cdn.tinypass.com/tpl/d1/tpm.js"></script>
+		
 	<?php
 	endif;
 }
-//add_action( 'wp_head', 'ctmirror_head', 9 );
+add_action( 'wp_head', 'ctmirror_head', 9 );
 
 /**
  * Eliminating relativistic times ("about 2 hours ago")
