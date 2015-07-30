@@ -53,7 +53,7 @@ function ctmirror_head() {
 	<?php
 	endif;
 }
-add_action( 'wp_head', 'ctmirror_head', 9 );
+//add_action( 'wp_head', 'ctmirror_head', 9 );
 
 /**
  * Eliminating relativistic times ("about 2 hours ago")
