@@ -34,12 +34,7 @@ add_filter( 'the_content', 'ctmirror_callout', 20 );
  */
 function ctmirror_callout_insert() {
 	ob_start();	// why no get_the_widget() ?
-	the_widget(
-		'largo_related_posts_widget',
-		array(
-			'title' => 'Also Read',
-			'qty' => 3,
-		)
-	);
+	// disable Also Read in articles (leave code intact)
+	// the_widget('largo_related_posts_widget',array('title' => 'Also Read', 'qty' => 3,));
 	return ob_get_clean();
 }
