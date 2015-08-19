@@ -87,7 +87,7 @@
 					'terms' 	=> 'homepage-featured'
 				)
 			),
-			'showposts'		=> 3,
+			'showposts'		=> 4,
 			'post__not_in' 	=> $ids
 		) );
 		if ( $substories->have_posts() ) :
