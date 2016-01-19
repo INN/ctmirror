@@ -211,6 +211,13 @@ function ctmirror_iframe_shortcode( $atts ) {
 }
 add_shortcode( 'iframe', 'ctmirror_iframe_shortcode' );
 
+// script shortcode per member request
+function ctmirror_script_shortcode( $atts ) { 
+	echo "<script src='" . $atts["src"] . "'></script>" ;
+}
+add_shortcode('script', 'ctmirror_script_shortcode');
+
+
 /**
  * Killing columns from 'All Posts' admin screen
  */
