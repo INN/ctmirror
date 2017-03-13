@@ -8,8 +8,8 @@
  Version:        1.0.1
 */
 /*@import url(../largo/style.css);*/
-@import url(css/ctmirror.css);@import url(http://fonts.googleapis.com/css?family=Merriweather:700,400);#page{box-shadow: none !important;-webkit-box-shadow:none !important;-moz-box-shadow:none !important}
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400);
+@import url(css/ctmirror.css);@import url(https://fonts.googleapis.com/css?family=Merriweather:700,400);#page{box-shadow: none !important;-webkit-box-shadow:none !important;-moz-box-shadow:none !important}
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400);
 body { background: #fff !important;}
 h1.entry-title{font-size:20px;margin-top:2px}
 .st_sharethis{display:none}
@@ -229,7 +229,7 @@ p.wp-caption-text{font-size:11px!important;font-family:Merriweather,Cambria,"Pal
 .gsib_a{padding:0!important}
 .gsib_b{display:none!important}
 .gsc-input-box table{height:20px!important;padding:0!important;margin:0!important;border:none!important}
-#gsc-iw-id1,.gsc-input-box table tbody,.gsc-input-box table tr{border:none!important} 
+#gsc-iw-id1,.gsc-input-box table tbody,.gsc-input-box table tr{border:none!important}
 #gs_tti50 input{height:21px!important;margin-top:0!important;border-radius:0!important}
 table td.gsc-search-button{padding:0;border-radius:0!important;border:none!important}
 .gsc-search-button input{margin-top:-1px!important;border-radius:0!important;margin-left:0!important;border:none!important}
@@ -342,7 +342,7 @@ aside.module ul li {
 	font-size: 12px;
 	font-weight: bold;
 }
-aside.module .relatedHeader { 
+aside.module .relatedHeader {
 	font-size: 13px;
 	font-family: Futura,Arial,Verdana;
 	font-weight: 100;
@@ -418,7 +418,7 @@ aside.module .relatedHeader {
 
 table {
 	margin: 0 ;
-} 
+}
 .mirror_table_container {
 	float: left;
 	width: 97%;
@@ -482,7 +482,7 @@ table {
 	font-weight: bold;
 	background: #ededed;
 	padding: 5px 8px;
-	font-size: 14px;	
+	font-size: 14px;
 	border-bottom: 1px solid #8c0c04;
 	text-align: left;
 	color: #8c0c04;
