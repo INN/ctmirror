@@ -5,9 +5,11 @@
  * Description: Shows the post with a full-width header image
  */
 get_header( "longform" );
+$featured_image = get_the_post_thumbnail_url();
+$header_bg =  $featured_image ? ' style="background-image:url(' . $featured_image . ');"' : '';
 ?>
 <!-- PLEASE ADD REAL FEATURED IMAGE AS BACKGROUND IMAGE HERE -->
-<div class="lf-background" style="background-image:url(<?php echo bloginfo('stylesheet_directory'); ?>/images/Malloy-sideshot.jpg);"></div>
+<div class="lf-background"<?php echo $header_bg; ?>></div>
 
 <div class="lf-header">
 	<div class="abs-center">
@@ -27,7 +29,7 @@ get_header( "longform" );
 		while ( have_posts() ) : the_post();
 			get_template_part( 'content', 'single' );
 			//comments_template( '', true );
-			echo do_shortcode('[fbcomments]');
+			echo do_shortcode( '[fbcomments]' );
 		endwhile;
 	?>
 </div><!--#content-->
@@ -53,9 +55,9 @@ get_header( "longform" );
 		if(scrollY >= height_check) {
 		    nav.show();
 		} else {
-			nav.hide();   
+			nav.hide();
 		}
-		
+
 	}
 
 	jQuery(document).ready(function(){
@@ -67,11 +69,11 @@ get_header( "longform" );
 			var spacer = '<div class="spacer" style="height:' + $this.height() + 'px;"></div>'
 			$this.after(spacer);
 		})
-    	
-    	setStickyNav(window.scrollY);
+
+		setStickyNav(window.scrollY);
 	});
 
-	jQuery(window).resize(function(){  
+	jQuery(window).resize(function(){
 		win_height = jQuery(window).height();
 		setStickyNav(jQuery);
 	});
