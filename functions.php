@@ -33,6 +33,16 @@ function ctmirror_enqueue() {
 		'1.0',
 		TRUE
 	);
+
+	if ( is_page_template( 'single-longform.php' ) ) {
+		wp_enqueue_script(
+			'ctmirror-single-longform',
+			get_stylesheet_directory_uri() . '/js/single-longform.js',
+			array('jquery'),
+			'1.0',
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'ctmirror_enqueue' );
 
