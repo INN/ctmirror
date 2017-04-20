@@ -37,7 +37,7 @@ $header_bg =  $featured_image ? ' style="background-image:url(' . $featured_imag
 
 <nav class="site-navigation">
 	<div id="longform-logo">
-		<img src="<?php echo bloginfo('stylesheet_directory'); ?>/images/mirrorlogo.png" alt="CT Mirror Logo" />
+		<a href="//ctmirror.org"><img src="<?php echo bloginfo('stylesheet_directory'); ?>/images/mirrorlogo.png" alt="CT Mirror Logo" /></a>
 	</div>
 	<div class="longform-social">
 		<a href="https://twitter.com/home?status=https://ctmirror.org/2017/01/30/a-legacy-of-debt-connecticut-standing-on-its-own-fiscal-cliff/">            

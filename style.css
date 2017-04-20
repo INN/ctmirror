@@ -774,7 +774,8 @@ table {
 .lf-header .by,
 .lf-header .sep,
 .lf-header .edit-link,
-.lf-header time {
+.lf-header time,
+.lf-header .clean-read {
 	display:none;
 }
 
