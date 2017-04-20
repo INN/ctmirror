@@ -802,6 +802,18 @@ table {
 	color:#fff;
 }
 
+.big-meta-byline {
+    width: 100%;
+    text-align: center !important;
+    font-size: 17px;
+    font-family: "Lato", "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
+    /*  text-transform: uppercase;*/
+    
+    color: white;
+    font-weight: 300;
+    float: none;
+}
+
 #page.longform .module.type-pull-quote { 
 	padding: 30px;
     border-left: 1px solid #aaa;
