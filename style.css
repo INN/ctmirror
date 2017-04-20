@@ -826,6 +826,10 @@ table {
     background-color:transparent;
 }
 
+#page.longform .module.align-left.type-pull-quote {
+	text-align:left;
+}
+
 #page.longform .module.align-right,
 #page.longform .module.alignright {
     margin-right: -170px;
@@ -880,6 +884,12 @@ table {
 	#page.longform .module.align-left,
 	#page.longform .module.alignleft {
 	    margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.post-template-single-longform #site-navigation.lf-sticky {
+		top:0;
 	}
 }
 

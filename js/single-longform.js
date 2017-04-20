@@ -43,9 +43,11 @@ function adjustFullImages(){
 		var content_width = $('#content').width();
 
 		if (win_width>1170) {
-			margin = -205
-		} else {
+			margin = -(full_width - content_width)/2;
+		} else if (win_width>550) {
 			margin = -(win_width - content_width)/2;
+		} else {
+			margin = 0;
 		}
 		$parent.css({
 			'width': full_width,
