@@ -1,19 +1,12 @@
 // scroll-based actions
+var $ = jQuery;
 var win_height;
 
 function setStickyNav(scrollY){
 	var $ = jQuery;
 	// sticky nav
-	var nav = $('#site-navigation');
-	var logged_in = $('body').hasClass('logged-in');
-	var height_check;
-
-	if (logged_in) {
-		height_check = win_height-134;
-	} else {
-		height_check = win_height-108;
-	}
-	if(scrollY >= height_check) {
+	var nav = $('#site-navigation.lf-sticky');
+	if(scrollY >= win_height) {
 		nav.show();
 	} else {
 		nav.hide();
@@ -21,22 +14,61 @@ function setStickyNav(scrollY){
 
 }
 
-jQuery(document).ready(function(){
-	var $ = jQuery;
-	var iframes = $('iframe');
-
-	iframes.each(function(){
+function setEmbeds(){
+	var embeds = $('.full-width-visual');
+	embeds.each(function(){
 		var $this = $(this);
-		var spacer = '<div class="spacer" style="height:' + $this.height() + 'px;"></div>'
+		var spacer = '<div class="spacer" style="height:' + $this.height() + 'px;"></div>';
+		$this.nextAll('.spacer').first().remove();
 		$this.after(spacer);
-	})
+	});
+}
 
+function stripInlineStyles(){
+	$('.module.image').attr('style','');
+}
+
+function adjustFullImages(){
+	var full_width = $('#main').width();
+	var imgs = $('img.size-full');
+
+	imgs.each(function(){
+		var $this = $(this);
+		var $parent = $this.parent()
+		$this.attr('width','100%');
+		$this.attr('height','');
+		var margin = 0;
+
+		var win_width = $(window).width();
+		var content_width = $('#content').width();
+
+		if (win_width>1170) {
+			margin = -205
+		} else {
+			margin = -(win_width - content_width)/2;
+		}
+		$parent.css({
+			'width': full_width,
+			'margin-left': margin
+		});
+		$parent.find('.wp-caption-text').css('max-width',content_width);
+	})
+	
+}
+
+jQuery(document).ready(function(){
+	win_height = jQuery(window).height();
 	setStickyNav(window.scrollY);
+	setEmbeds();
+	stripInlineStyles();
+	adjustFullImages();
 });
 
 jQuery(window).resize(function(){
 	win_height = jQuery(window).height();
 	setStickyNav(jQuery);
+	setEmbeds();
+	adjustFullImages();
 });
 
 var latestKnownScrollY = 0,
