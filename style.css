@@ -703,8 +703,12 @@ table {
 
 #longform-logo {
 	padding:1em;
-	border-right:1px solid #fff;
 	float:left;
+	transition: opacity 250ms;
+}
+
+#longform-logo:hover {
+	opacity:.8
 }
 #longform-logo img {
     height: 30px;
@@ -815,6 +819,17 @@ table {
     float: none;
 }
 
+#page.longform #content .entry-content p:first-child:first-letter {
+  color: #000;
+  float: left;
+  font-family: "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
+  font-size: 64px;
+  line-height: 60px;
+  padding-top: 2px;
+  padding-right: 8px;
+  padding-left: 3px;
+}
+
 #page.longform .module.type-pull-quote { 
 	padding: 30px;
     border-left: 1px solid #aaa;
@@ -913,6 +928,11 @@ table {
     position: absolute;
     right: 10px;
     top: 0px;
+	transition: opacity 250ms;
+}
+
+.share-logo:hover {
+	opacity:.8;
 }
 
 .facebook-logo {
