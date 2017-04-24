@@ -33,6 +33,16 @@ function ctmirror_enqueue() {
 		'1.0',
 		TRUE
 	);
+
+	if ( is_page_template( 'single-longform.php' ) ) {
+		wp_enqueue_script(
+			'ctmirror-single-longform',
+			get_stylesheet_directory_uri() . '/js/single-longform.js',
+			array('jquery'),
+			'1.0',
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'ctmirror_enqueue' );
 
@@ -42,14 +52,14 @@ add_action( 'wp_enqueue_scripts', 'ctmirror_enqueue' );
 function ctmirror_head() {
 
 	if ( !is_admin() ) :	?>
-	
+
 		<script type="text/javascript">
 		    window._tpm = window._tpm || [];
 		    window._tpm['paywallID'] = '87513365';
 		    window._tpm['trackPageview'] = true;
 		</script>
 		<script type="text/javascript" src="//cdn.tinypass.com/tpl/d1/tpm.js"></script>
-		
+
 	<?php
 	endif;
 }
@@ -212,7 +222,7 @@ function ctmirror_iframe_shortcode( $atts ) {
 add_shortcode( 'iframe', 'ctmirror_iframe_shortcode' );
 
 // script shortcode per member request
-function ctmirror_script_shortcode( $atts ) { 
+function ctmirror_script_shortcode( $atts ) {
 	echo "<script src='" . $atts["src"] . "'></script>" ;
 }
 add_shortcode('script', 'ctmirror_script_shortcode');
@@ -237,21 +247,49 @@ add_filter('manage_posts_columns' , 'ctmirror_admin_columns', 11);
 add_action( 'init', 'vipx_allow_contenteditable_on_divs' );
 function vipx_allow_contenteditable_on_divs() {
     global $allowedposttags;
- 
+
     $tags = array( 'div','style','script','link' );
     $new_attributes = array( 'contenteditable' => array() );
- 
+
     foreach ( $tags as $tag ) {
         if ( isset( $allowedposttags[ $tag ] ) && is_array( $allowedposttags[ $tag ] ) )
             $allowedposttags[ $tag ] = array_merge( $allowedposttags[ $tag ], $new_attributes );
     }
 }
-add_filter('tiny_mce_before_init', 'vipx_filter_tiny_mce_before_init'); 
-function vipx_filter_tiny_mce_before_init( $options ) { 
- 
-    if ( ! isset( $options['extended_valid_elements'] ) ) 
-        $options['extended_valid_elements'] = ''; 
-     
-    $options['extended_valid_elements'] .= ',div[contenteditable|class|id|style|rel|num|word|text|related],span[contenteditable|class|id|style|rel|num|word|text|related]'; 
-    return $options; 
+add_filter('tiny_mce_before_init', 'vipx_filter_tiny_mce_before_init');
+function vipx_filter_tiny_mce_before_init( $options ) {
+
+    if ( ! isset( $options['extended_valid_elements'] ) )
+        $options['extended_valid_elements'] = '';
+
+    $options['extended_valid_elements'] .= ',div[contenteditable|class|id|style|rel|num|word|text|related],span[contenteditable|class|id|style|rel|num|word|text|related]';
+    return $options;
 }
+
+function ctmirror_cmb2_fields() {
+
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = '_ctmirror_';
+
+	/**
+	 * Initiate the metabox
+	 */
+	$cmb = new_cmb2_box( array(
+		'id'            => 'series_headline',
+		'title'         => __( 'Series Headline', 'largo' ),
+		'object_types'  => array( 'post', ), // Post type
+		'context'       => 'side',
+		'priority'      => 'low',
+		'show_names'    => false, // Show field names on the left
+	) );
+
+	$cmb->add_field( array(
+		'name'       => __( 'Series Headline', 'largo' ),
+		'desc'       => __( '', 'largo' ),
+		'id'         => $prefix . 'series_headline',
+		'type'       => 'text',
+		'sanitization_cb' => 'sanitize_text_field', // custom sanitization callback parameter
+	) );
+
+}
+add_action( 'cmb2_admin_init', 'ctmirror_cmb2_fields' );

@@ -654,3 +654,287 @@ table {
 	right: 8px;
 	font-size: 42px;
 }
+
+
+/***** LONGFORM TEMPLATE *****/
+
+#page.longform {
+	max-width:100%;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+
+#page.longform  #site-header {
+	margin:0!important;
+}
+
+.post-template-single-longform #site-navigation,
+#page.longform .site-navigation {
+    position: static;
+    width: 100%;
+    height:62px;
+    background-color: #000;
+    color: white;
+}
+
+.post-template-single-longform #site-navigation.lf-sticky {
+	display:none;
+	position: fixed;
+	z-index:999;
+}
+
+#page.longform #main {
+	max-width: 1170px;
+    margin: 44px auto 20px;
+    position: relative;
+}
+
+#page.longform #content {
+	max-width:760px;
+    margin: 0 auto;
+    float: none;
+    position:static;
+}
+
+#page.longform #main .post header {
+	display:none;
+}
+
+#longform-logo {
+	padding:1em;
+	float:left;
+	transition: opacity 250ms;
+}
+
+#longform-logo:hover {
+	opacity:.8
+}
+#longform-logo img {
+    height: 30px;
+}
+
+.longform-social {
+	float:right;
+}
+.longform-social .post-social {
+	border:none;
+}
+
+.full-width-visual {
+	width:100%;
+    position: absolute;
+    left: 0;
+    padding:1em 0;
+}
+
+.lf-background {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    z-index:-1;
+    top:0;
+}
+
+.lf-header {
+	height:100vh;
+	width:100%;
+	position:relative;
+	text-align:center;
+	background-color:rgba(0,0,0,.3);
+}
+
+.abs-center {
+	min-width:80%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+
+
+.big-headline {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    text-transform: uppercase;
+    float: none;
+    margin-top: 5px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    font-family: "Lato", Arial, sans-serif;
+}
+
+.lf-header h1.entry-title.big-headline {
+	font-size:44px;
+	text-shadow: 0.1em 0.1em 0.25em black;
+	font-weight:300;
+	margin:1em 0;
+}
+
+.lf-header .by,
+.lf-header .sep,
+.lf-header .edit-link,
+.lf-header time,
+.lf-header .clean-read {
+	display:none;
+}
+
+.lf-header .byline .by-author .author a:before {
+	content: 'by ';
+	font-weight:normal;
+	color:#fff;
+}
+
+.lf-header .byline .by-author .author a,
+.lf-header .byline .by-author .author a:hover {
+	color:#fff;
+	text-transform:none;
+	font-weight:normal;
+	text-decoration: none;
+}
+
+.pre-headline {
+	letter-spacing: 2px;
+	font-size:20px;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+	text-shadow: 0.1em 0.1em 0.25em black;
+	color:#fff;
+}
+
+.big-meta-byline {
+    width: 100%;
+    text-align: center !important;
+    font-size: 17px;
+    font-family: "Lato", "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
+    /*  text-transform: uppercase;*/
+    
+    color: white;
+    font-weight: 300;
+    float: none;
+}
+
+#page.longform #content .entry-content p:first-child:first-letter {
+  color: #000;
+  float: left;
+  font-family: "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
+  font-size: 64px;
+  line-height: 60px;
+  padding-top: 2px;
+  padding-right: 8px;
+  padding-left: 3px;
+}
+
+#page.longform .module.type-pull-quote { 
+	padding: 30px;
+    border-left: 1px solid #aaa;
+    margin: 30px;
+    font-size: 20px;
+    font-family: "Lato", Arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    background-color:transparent;
+}
+
+#page.longform .module.align-left.type-pull-quote {
+	text-align:left;
+}
+
+#page.longform .module.align-right,
+#page.longform .module.alignright {
+    margin-right: -170px;
+}
+
+#page.longform .module.align-left,
+#page.longform .module.alignleft {
+    margin-left: -170px;
+}
+
+#page.longform p.wp-caption-text {
+    font-family: 'Lato';
+    border-bottom: none;
+    font-size: 14px!important;
+    font-weight: 400;
+    margin: .5em auto 1em;
+}
+
+#page.longform .module.image {
+	box-sizing:border-box;
+}
+#page.longform img.size-full {
+	min-width:100%;
+}
+
+@media screen and (max-width: 1170px) {
+	#page.longform .module.align-right,
+	#page.longform .module.alignright {
+	    margin-right: -100px;
+	}
+
+	#page.longform .module.align-left,
+	#page.longform .module.alignleft {
+	    margin-left: -100px;
+	}
+	#page.longform img.size-full {
+		min-width:100%;
+		box-sizing:border-box;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#page.longform #content {
+	    padding: 20px;
+	    box-sizing: border-box;
+	}
+	#page.longform .module.align-right,
+	#page.longform .module.alignright {
+	    margin-right: 0;
+	}
+
+	#page.longform .module.align-left,
+	#page.longform .module.alignleft {
+	    margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.post-template-single-longform #site-navigation.lf-sticky {
+		top:0;
+	}
+}
+
+#page.longform .module.type-pull-quote span.quote-name {
+	font-size:16px;
+	font-weight:normal;
+	display: block;
+	margin-top:1em;
+	text-align: right;
+} 
+#page.longform .module.type-pull-quote span.quote-title {
+	font-size:12px;	
+	display: block;
+	text-align: right;
+} 
+
+.share-logo {
+    margin: 21px 10px 10px 10px;
+    float: right;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+	transition: opacity 250ms;
+}
+
+.share-logo:hover {
+	opacity:.8;
+}
+
+.facebook-logo {
+    right: 45px;
+}
