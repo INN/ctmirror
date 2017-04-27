@@ -819,12 +819,20 @@ table {
     float: none;
 }
 
+#page.longform {
+	font-family: "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
+}
+
+#page.longform #content .entry-content p {
+	line-height:1.5;
+}
+
 #page.longform #content .entry-content p:first-child:first-letter {
   color: #000;
   float: left;
   font-family: "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
-  font-size: 64px;
-  line-height: 60px;
+  font-size: 72px;
+  line-height: 68px;
   padding-top: 2px;
   padding-right: 8px;
   padding-left: 3px;

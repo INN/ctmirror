@@ -27,7 +27,8 @@
 	}
 
 	function stripInlineStyles(){
-		$('.module.image').attr('style','');
+		//$('.module.image').attr('style','');
+		$('img.size-full').parent().attr('style','');
 	}
 
 	function adjustFullImages(){
