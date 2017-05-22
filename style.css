@@ -813,7 +813,7 @@ table {
     font-size: 17px;
     font-family: "Lato", "Merriweather", "Merriweather", Cambria, "Palatino Linotype", Baskerville, "Lucida Bright", Georgia, Times, serif;
     /*  text-transform: uppercase;*/
-    
+
     color: white;
     font-weight: 300;
     float: none;
@@ -838,7 +838,7 @@ table {
   padding-left: 3px;
 }
 
-#page.longform .module.type-pull-quote { 
+#page.longform .module.type-pull-quote {
 	padding: 30px;
     border-left: 1px solid #aaa;
     margin: 30px;
@@ -922,12 +922,12 @@ table {
 	display: block;
 	margin-top:1em;
 	text-align: right;
-} 
+}
 #page.longform .module.type-pull-quote span.quote-title {
-	font-size:12px;	
+	font-size:12px;
 	display: block;
 	text-align: right;
-} 
+}
 
 .share-logo {
     margin: 21px 10px 10px 10px;

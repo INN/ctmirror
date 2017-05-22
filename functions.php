@@ -94,18 +94,23 @@ function largo_byline( $echo = true ) {
 	if ( !isset( $values['largo_byline_text'] ) && $post->post_author == 1 )
 		$format = '<time class="entry-date updated dtstamp pubdate" datetime="%2$s">%3$s</time>';
 
-	$output = sprintf( '<span class="by-author"><span class="by">By:</span> <span class="author vcard" itemprop="author">%1$s</span></span><span class="sep"> | </span><time class="entry-date updated dtstamp pubdate" datetime="%2$s">%3$s</time>',
-		$authors,
-		esc_attr( get_the_date( 'c' ) ),
-		largo_time( false )
-	);
+	if ( is_page_template( 'single-longform.php' ) ) {
+		$output = sprintf( '<span class="by-author"><span class="author vcard" itemprop="author">%1$s</span></span>',
+			$authors
+		);
+	} else {
+		$output = sprintf( '<span class="by-author"><span class="by">By:</span> <span class="author vcard" itemprop="author">%1$s</span></span><span class="sep"> | </span><time class="entry-date updated dtstamp pubdate" datetime="%2$s">%3$s</time>',
+			$authors,
+			esc_attr( get_the_date( 'c' ) ),
+			largo_time( false )
+		);
+	}
 
 
-
-	if ( current_user_can( 'edit_post', $post->ID ) )
+	if ( current_user_can( 'edit_post', $post->ID ) && ! is_page_template( 'single-longform.php' ) )
 		$output .=  sprintf( ' | <span class="edit-link"><a href="%1$s">Edit This Post</a></span>', get_edit_post_link() );
 
- 	if ( is_single() && of_get_option( 'clean_read' ) === 'byline' )
+ 	if ( is_single() && 'byline' === of_get_option( 'clean_read' ) && ! is_page_template( 'single-longform.php' ) )
  		$output .=	__('<a href="#" class="clean-read">View as "Clean Read"</a>', 'largo');
 
 	if ( $echo )
