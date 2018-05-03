@@ -30,6 +30,7 @@ $header_bg = $featured_image ? ' style="background-image:url(' . $featured_image
 		<h2 class="pre-headline"><?php echo $series_headline; ?></h2>
 		<h1 class="entry-title big-headline" itemprop="headline"><?php the_title(); ?></h1>
 	 	<h5 class="byline big-meta-byline"><?php largo_byline(); ?></h5>
+		<h5 class="pubdate big-meta-byline"><?php echo get_the_date(); ?></h5>
 	</div>
 </div>
 
